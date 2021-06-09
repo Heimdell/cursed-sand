@@ -37,6 +37,8 @@ packages:
 #
 extra-deps:
 - polysemy-1.5.0.0@sha256:7edb723e7f703fe273a40e43fe33f6e8f7659fe60759e8698def1481262d314d,6246
+- gloss-raster-1.13.1.2
+- repa-3.4.1.4@sha256:5a99bde69fe96a18d70aae23f47c8f719b1134558dca3ee5a7c15423b68a132e,3323
 
 # - acme-missiles-0.3
 # - git: https://github.com/commercialhaskell/stack.git

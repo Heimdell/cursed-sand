@@ -3,7 +3,7 @@ dependencies:
 - base
 - containers
 - polysemy
-- sdl2
+- gloss-raster
 - lens
 - comonad
 - data-default
