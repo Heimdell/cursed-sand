@@ -1,0 +1,33 @@
+
+dependencies:
+- base
+- containers
+- polysemy
+- sdl2
+- lens
+- comonad
+- data-default
+- ghc-prim
+
+default-extensions:
+- MultiParamTypeClasses
+- FunctionalDependencies
+- BlockArguments
+- RankNTypes
+- ScopedTypeVariables
+- ImportQualifiedPost
+- DerivingStrategies
+- FlexibleContexts
+- TypeApplications
+- AllowAmbiguousTypes
+- LambdaCase
+- GeneralizedNewtypeDeriving
+- TypeOperators
+- DataKinds
+- KindSignatures
+- ViewPatterns
+- GADTs
+
+library:
+  source-dirs:
+  - src
