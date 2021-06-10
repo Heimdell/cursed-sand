@@ -1,8 +1,11 @@
 
+name: CursedSands
+
 dependencies:
 - base
 - containers
 - polysemy
+- gloss
 - gloss-raster
 - lens
 - comonad
@@ -27,7 +30,20 @@ default-extensions:
 - KindSignatures
 - ViewPatterns
 - GADTs
+- DuplicateRecordFields
+
+ghc-options: -threaded -O3 -fno-liberate-case -funfolding-use-threshold1000 -funfolding-keeness-factor1000 -optlo-O3
 
 library:
   source-dirs:
   - src
+
+executables:
+  CursedSands:
+    source-dirs:
+    - app
+
+    main: Main.hs
+
+    dependencies:
+    - CursedSands

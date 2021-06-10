@@ -46,7 +46,7 @@ simulate
      , Metric spc                          -- ... with a metric
      , Neighborhood n                      -- a neighborhood
      )
-  => (Map Point c -> Map Point c)          -- gets neighbors, returns changed only
+  => (Point -> Map Point c -> Map Point c)          -- gets neighbors, returns changed only
   -> Sem m ()
 simulate step = run
   where
@@ -55,14 +55,14 @@ simulate step = run
         gets' @"current" Queue.pop >>= \case
           Nothing -> return Stop
 
-          Just (rest, point :: Point) -> do
+          Just (rest, point) -> do
             let neighbors = neighborhood @n point  -- get all points around locus
 
             pts <- for neighbors \pt -> do         -- construct subspace
               c <- gets @(spc c) (^.atCell pt)
               return (pt, c)
 
-            let changedCut = step (Map.fromList pts)        -- perform step over subspace
+            let changedCut = step point (Map.fromList pts)  -- perform step over subspace
             let changed    = Map.keys changedCut            -- get points that changed
             let poked      = (neighborhood @n =<< changed)  -- neighbors of all changed...
                            \\ changed                       -- ... except changed themselves

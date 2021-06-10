@@ -37,11 +37,11 @@ cube pt edge c =
 
 -- Place shape into the world.
 --
-createShape :: forall c spc m. (Default c, Member (State (spc c)) m, Metric spc) => [(Point, c)] -> Sem m ()
-createShape = traverse_ (uncurry (createBlock @_ @spc))
+createShape :: forall c spc. (Default c, Metric spc) => [(Point, c)] -> spc c -> spc c
+createShape = flip $ foldl $ flip $ uncurry createBlock
 
 -- Place single block into the world.
 --
-createBlock :: forall c spc m. (Default c, Member (State (spc c)) m, Metric spc) => Point -> c -> Sem m ()
+createBlock :: forall c spc. (Default c, Metric spc) => Point -> c -> spc c -> spc c
 createBlock pt c = do
-  modify @(spc c) $ atCell pt .~ c
+  atCell pt .~ c

@@ -8,7 +8,7 @@ import GHC.Types (Symbol)
 
 -- Marked type.
 --
-data (s :: Symbol) =: a = Tagged { untag :: a }
+newtype (s :: Symbol) =: a = Tagged { untag :: a }
 
 -- Access to marked element of state.
 --

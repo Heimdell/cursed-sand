@@ -19,3 +19,10 @@ add = scalar (+)
 
 sub :: Point -> Point -> Point
 sub = scalar subtract
+
+up   = add $ Point   0   0   1
+down = add $ Point   0   0 (-1)
+n    = add $ Point   1   0   0
+s    = add $ Point (-1)  0   0
+f    = add $ Point   0   1   0
+w    = add $ Point   0 (-1)  0

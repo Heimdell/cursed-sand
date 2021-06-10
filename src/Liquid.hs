@@ -1,34 +1,35 @@
 
 module Liquid where
 
--- import Control.Comonad
--- import Control.Lens
--- import Control.Monad.State
+import Data.Default
 
--- import Data.Default
--- import Data.Foldable
--- import Data.Traversable
--- import Data.List
--- import Data.Map qualified as Map
--- import Data.Map (Map)
+import Point
 
--- import GHC.Types (Symbol)
+-- Block state.
+--
+data Cell
+  = Liquid (Maybe Dir)  -- horizontal flow
+  | Rock
+  | Air
+  deriving stock (Eq, Ord, Show)
 
--- import Queue qualified
+-- Direction of flow.
+--
+data Dir = N | S | F | W
+  deriving stock (Eq, Ord, Show)
 
--- -- Metric of some space.
--- --
--- -- Block state.
--- --
--- data Cell
---   = Liquid (Maybe Dir)  -- horizontal flow
---   | Rock
---   | Air
---   deriving stock (Eq, Ord, Show)
+instance Default Cell where def = Air
 
--- -- Direction of flow.
--- --
--- data Dir = N | S | F | W
---   deriving stock (Eq, Ord, Show)
+isLiquid :: Cell -> Bool
+isLiquid Liquid {} = True
+isLiquid _         = False
 
--- instance Default Cell where def = Air
+isAir :: Cell -> Bool
+isAir Air {} = True
+isAir _      = False
+
+go :: Dir -> Point -> Point
+go N = n
+go S = s
+go W = w
+go F = f
